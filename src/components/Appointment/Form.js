@@ -7,19 +7,16 @@ export default function Form(props) {
   const [name, setName] = useState(props.name || "");
   const [interviewer, onChangeInterviewer] = useState(props.interviewer || null);
 
-  function Reset() {
+  // RESETING INTERVIEW FORM
+  function reset() {
     setName("");
     onChangeInterviewer(null);
   }
-
-  function Cancel() {
-    Reset();
+ 
+  // CANCELLING INTERVIEW FORM
+  function cancel() {
+    reset();
     props.onCancel();
-  }
-
-  function Save() {
-    props.onSave(name, interviewer)
-    Reset()
   }
 
 
@@ -44,8 +41,8 @@ export default function Form(props) {
       </section>
       <section className="appointment__card-right">
         <section className="appointment__actions">
-          <Button danger onClick={Cancel}>Cancel</Button>
-          <Button confirm onClick={Save}>Save</Button>
+          <Button danger onClick={() => props.onCancel(name, interviewer)}>Cancel</Button>
+          <Button confirm onClick={() => props.onSave(name, interviewer)}>Save</Button>
         </section>
       </section>
     </main>
