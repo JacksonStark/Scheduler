@@ -1,5 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import InterviewerListItem from 'components/InterviewerListItem.js';
+
+InterviewerList.propTypes = {
+  interviewer: PropTypes.number,
+  onChangeInterviewer: PropTypes.function
+}
+
 
 export default function InterviewerList(props) {
 

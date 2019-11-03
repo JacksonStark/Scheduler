@@ -8,16 +8,16 @@ export default function Form(props) {
   const [interviewer, onChangeInterviewer] = useState(props.interviewer || null);
 
   // RESETING INTERVIEW FORM
-  function reset() {
-    setName("");
-    onChangeInterviewer(null);
-  }
+  // function reset() {
+  //   setName("");
+  //   onChangeInterviewer(null);
+  // }
  
-  // CANCELLING INTERVIEW FORM
-  function cancel() {
-    reset();
-    props.onCancel();
-  }
+  // // CANCELLING INTERVIEW FORM
+  // function cancel() {
+  //   reset();
+  //   props.onCancel();
+  // }
 
 
   return (

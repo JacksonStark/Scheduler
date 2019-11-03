@@ -3,7 +3,7 @@ import "components/Appointment/styles.scss";
 
 export default function Show(props) {
 
-  console.log("PROPS ARE:", props);
+  // console.log("PROPS ARE:", props);
   // const interviewerName = "" || props.interviewer.name
   return (
     <main className="appointment__card appointment__card--show">

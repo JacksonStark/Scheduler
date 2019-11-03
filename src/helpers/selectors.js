@@ -4,6 +4,7 @@ export function getAppointmentsForDay(state, day) {
   for (const currentDay of days) {
     if (currentDay.name === day) { 
       currentDay.appointments.forEach(appId => {
+        // console.log(appointments);
         appointments.push(state.appointments[appId]);
       })
     }

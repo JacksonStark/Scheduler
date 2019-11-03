@@ -13,8 +13,8 @@ export default function Application(props) {
   const { state, setDay, bookInterview, cancelInterview } = useApplicationData();
 
   const interviewers = getInterviewersForDay(state, state.day);
-
-
+  // console.log(state.appointments)
+  
   // SETTING SCHEDULE (based on day)
   const appointments = getAppointmentsForDay(state, state.day).map(
     appointment => {
@@ -30,7 +30,7 @@ export default function Application(props) {
         />
       );
     }
-  );
+    );
 
 
 
