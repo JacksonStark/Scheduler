@@ -64,7 +64,7 @@ export default function Appointment(props) {
 
 
   return (
-    <article className="appointment">
+    <article className="appointment" data-testid="appointment">
       <Header time={props.time} />
 
       {/* Empty the card and display an on-click plus image (CREATE)*/}

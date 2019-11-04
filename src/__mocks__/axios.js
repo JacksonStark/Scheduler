@@ -1,4 +1,5 @@
 import { jsxEmptyExpression } from "@babel/types";
+import { getHeapStatistics } from "v8";
 
 const fixtures = {
   days: [
@@ -56,35 +57,51 @@ const fixtures = {
 };
 
 export default {
+
+   // mocking every axios scenario, including the config obj. (defaults))
+  defaults: { baseURL: " " },
   get: jest.fn(url => {
-    switch (url) {
-      
-      // DAYS API
-      case "api/days":
-        return Promise.resolve({
-          status: 200,
-          statusText: "OK",
-          data: fixtures.days
-        });
 
-      // APPOINTMENTS API
-      case "api/days/appointments":
-        return Promise.resolve({
-          status: 200,
-          statusText: "OK",
-          data: fixtures.appointments
-        });
-
-      // INTERVIEWERS API
-      case "api/interviewers":
-        return Promise.resolve({
-          status: 200,
-          statusText: "OK",
-          data: fixtures.interviewers
-        });
-
-      default:
-        throw new Error(`Tried to fetch with unrecognized url path: ${url}`);
+    // DAYS API
+    if (url === "/api/days") {
+      return Promise.resolve({
+        status: 200,
+        statusText: "OK",
+        data: fixtures.days
+      })
     }
+
+    // APPOINTMENTS API
+    if (url === "/api/appointments") {
+      return Promise.resolve({
+        status: 200,
+        statusText: "OK",
+        data: fixtures.appointments
+      })
+    }
+
+    // INTERVIEWERS API
+    if (url === "/api/interviewers") {
+      return Promise.resolve({
+        status: 200,
+        statusText: "OK",
+        data: fixtures.interviewers
+      })
+    }
+  }),
+
+  // NEW INTERVIEW
+  put: jest.fn(url => {
+    return Promise.resolve({
+      status: 204,
+      statusText: "No content"
+    })
+  }),
+
+  delete: jest.fn(url => {
+    return Promise.resolve({
+      status: 204,
+      statusText: "Content deleted"
+    })
   })
-};
+}
