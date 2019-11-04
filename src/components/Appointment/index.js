@@ -57,7 +57,7 @@ export default function Appointment(props) {
   const cancel = () => {
     transition(DELETING, true);  // WHY IS THE BOOLEAN ARGUMENT FOR THIS ONE NECESSARY??????
     props
-      .cancelInterview(props.id)
+      .cancelInterview(props.id) 
       .then(() => transition(EMPTY))
       .catch(() => transition(ERROR_DELETE, true)) // WHEN THIS ONE HANDLES IT REGARDLESS
   }

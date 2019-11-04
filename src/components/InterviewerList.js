@@ -4,7 +4,7 @@ import InterviewerListItem from 'components/InterviewerListItem.js';
 
 InterviewerList.propTypes = {
   interviewer: PropTypes.number,
-  onChangeInterviewer: PropTypes.function
+  onChangeInterviewer: PropTypes.func.isRequired
 }
 
 
