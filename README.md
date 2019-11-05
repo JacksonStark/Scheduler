@@ -1,6 +1,6 @@
 # Interview Scheduler
 
-  Interview Scheduler is a small react app that allows users to book, edit and delete "fake" appointments for the days Monday to Friday.
+  Interview Scheduler is a web application, built with React, that allows users to book, edit and delete appointments for the days Monday through Friday.
 
 ## Setup
 
@@ -31,25 +31,25 @@ npm run storybook
 ```
 
 
-# Screenshots of Final Product
+# Final Product
 
-## An example of a fully booked day.
+## An example of a fully booked day. 
 
-!["fully booked day"](https://github.com/Joshua-McGee/scheduler/blob/master/docs/fully-booked-day.png?raw=true)
+!["fully booked day"](https://github.com/JacksonStark/Scheduler/blob/master/docs/fully-booked.jpg?raw=true)
 
-## Hover over an appointment to reveal the edit and delete icons.
+## Hover over an existing appointment to reveal the edit and delete icons.
 
-!["hover state"](https://github.com/Joshua-McGee/scheduler/blob/master/docs/hover-state.png?raw=true)
+!["hover state"](https://github.com/JacksonStark/Scheduler/blob/master/docs/hover-interview.jpg?raw=true)
 
-## Editing an interview will take previous values and allow you to change them.
+## Editing an interview will display the same form as creating an interview, but will reveal the current values and allow you to change them.
 
-!["edit"](https://github.com/Joshua-McGee/scheduler/blob/master/docs/edit-an-appointment.png?raw=true)
+!["edit interview"](https://github.com/JacksonStark/Scheduler/blob/master/docs/edit-interview.jpg?raw=true)
 
-## When deleting an interview we check to make sure you want to delete it.
+## When deleting an interview, we have a measure in place to confirm that you indeed would like to delete.
 
-!["delete"](https://github.com/Joshua-McGee/scheduler/blob/master/docs/deleting-an-appointment.png?raw=true)
+!["delete interview"](https://github.com/JacksonStark/Scheduler/blob/master/docs/delete-interview.jpg?raw=true)
 
-Yes! its mobile friendly
+For full accessibility, this app is mobile friendly!
 ------
 
-!["mobile view"](https://github.com/Joshua-McGee/scheduler/blob/master/docs/mobile-view.png?raw=true)
+!["mobile view"](https://github.com/JacksonStark/Scheduler/blob/master/docs/mobile-view.jpg?raw=true)
