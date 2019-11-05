@@ -13,16 +13,16 @@ import useVisualMode from "hooks/useVisualMode";
 export default function Appointment(props) {
 
   const EMPTY = "EMPTY";
-  const SHOW = "SHOW"; //1
+  const SHOW = "SHOW";
   const CREATE = "CREATE";
   const SAVING = "SAVING";
-  const DELETING = "DELETING"; //3 --> 2 --> null
-  const CONFIRM = "CONFIRM"; //2 --> null
+  const DELETING = "DELETING"; 
+  const CONFIRM = "CONFIRM"; 
   const EDIT = "EDIT";
   const ERROR_SAVE = "ERROR_SAVE"
-  const ERROR_DELETE = "ERROR_DELETE"; // --> 2
+  const ERROR_DELETE = "ERROR_DELETE";
 
-  // SETTING INITAL MODE AND EXTRACTING OUT VALUES
+  // SETTING INITAL MODE (EITHER SHOW OR EMPTY) AND EXTRACTING OUT FUNCTIONS
   const { mode, transition, back } = useVisualMode(
     props.interview ? SHOW : EMPTY
   );

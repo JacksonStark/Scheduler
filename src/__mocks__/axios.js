@@ -1,6 +1,3 @@
-import { jsxEmptyExpression } from "@babel/types";
-import { getHeapStatistics } from "v8";
-
 const fixtures = {
   days: [
     {
@@ -98,6 +95,7 @@ export default {
     })
   }),
 
+  // CANCEL INTERVIEW
   delete: jest.fn(url => {
     return Promise.resolve({
       status: 204,

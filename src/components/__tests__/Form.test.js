@@ -52,29 +52,29 @@ describe("Form", () => {
   // SUBMISSION OF NAME AFTER FAILED EMPTY ATTEMPT TEST
 
   it("can successfully save after trying to submit an empty student name", () => {
-    /* 1. Create the mock onSave function */
+    // 1. Create the mock onSave function
     const onSave = jest.fn();
     
-    /* 2. Render the Form with interviewers and the onSave mock function passed as an onSave prop, the name prop should be blank or undefined */
+    // 2. Render the Form with interviewers and the onSave mock function passed as an onSave prop, the name prop should be blank or undefined
     const { getByText, getByPlaceholderText, queryByText } = render(
       <Form interviewers={interviewers} onSave={onSave} />
     );
 
-    /* 3. Click the save button */
+    // 3. Click the save button
     fireEvent.click(getByText("Save"));
 
-    // no name submitted, expect error
+    // 4. No name submitted, expect error
     expect(getByText(/student name cannot be blank/i)).toBeInTheDocument();
     expect(onSave).not.toHaveBeenCalled();
 
-    // name altered for resubmission
+    // 5. Name altered for resubmission
     fireEvent.change(getByPlaceholderText("Enter Student Name"), {
       target: { value: "Lydia Miller-Jones" }
     });
 
     fireEvent.click(getByText("Save"));
 
-    // name submitted, expect no error
+    // 6. Name submitted, expect no error
     expect(queryByText(/student name cannot be blank/i)).toBeNull()
 
     expect(onSave).toHaveBeenCalledTimes(1);

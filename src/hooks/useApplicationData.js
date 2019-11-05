@@ -1,32 +1,7 @@
 import { useEffect, useReducer } from 'react';
 import axios from 'axios';
 
-const SET_DAY = "SET_DAY";
-const SET_APPLICATION_DATA = "SET_APPLICATION_DATA";
-const SET_INTERVIEW = "SET_INTERVIEW";
-const UPDATE_SPOTS = "UPDATE_SPOTS";
-
-
-const reducer = (state, action) => {
-  switch (action.type) {
-    case SET_DAY:
-      return {...state, day: action.value}
-
-    case SET_APPLICATION_DATA:
-      return {...state, days: action.value.days, appointments: action.value.appointments, interviewers: action.value.interviewers}
-      
-    case SET_INTERVIEW:
-      return {...state, appointments: action.value}
-
-    case UPDATE_SPOTS:
-      return {...state, days: action.value}
-
-    default:
-      throw new Error(
-        `Tried to reduce with unsupported action type: ${action.type}`
-      );
-  }
-}
+import reducer, { SET_DAY, SET_APPLICATION_DATA, SET_INTERVIEW } from "reducers/application";
 
 const initialSchedule = {
   day: "Monday",
@@ -52,25 +27,7 @@ export default function useApplicationData() {
       dispatch({type: SET_APPLICATION_DATA, value: promiseData})
     })
   }, [])
-  
-  
-  const updateSpots = (newBooking) => {
-    let days = state.days.map(day => {
-      
-      if (day.name === state.day) {
-        if (newBooking) {
-          // Removing Spot
-          return {...day, spots: day.spots - day.spots > 0 ? 1 : 0}
-        } else {
-          // Adding Spot
-          return {...day, spots: day.spots + 1}
-        }
-      }
-      
-      return day
-    })
-    dispatch({type: UPDATE_SPOTS, value: days})
-  }
+
 
   // BOOKING INTERVIEW
   const bookInterview = (id, interview) => {
@@ -93,7 +50,6 @@ export default function useApplicationData() {
         .then((response) => {
           // console.log(appointments)
           dispatch({type: SET_INTERVIEW, value: appointments})
-          updateSpots(true);
         })
     )
   }
@@ -114,7 +70,6 @@ export default function useApplicationData() {
       axios.delete(`api/appointments/${id}`)
         .then((response) => {
           dispatch({type: SET_INTERVIEW, value: appointments})
-          updateSpots(false);
         })
     )
   };
