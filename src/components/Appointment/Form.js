@@ -5,7 +5,9 @@ import Button from "components/Button";
 
 export default function Form(props) {
   const [name, setName] = useState(props.name || "");
-  const [interviewer, onChangeInterviewer] = useState(props.interviewer || null);
+  const [interviewer, onChangeInterviewer] = useState(
+    props.interviewer || null
+  );
   const [error, setError] = useState("");
 
   // RESETING INTERVIEW FORM
