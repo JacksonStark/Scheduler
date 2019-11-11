@@ -20,6 +20,7 @@ export default function Appointment(props) {
   const EDIT = "EDIT";
   const ERROR_SAVE = "ERROR_SAVE";
   const ERROR_DELETE = "ERROR_DELETE";
+  const ERROR_INTERVIEWER = "ERROR_INTERVIEWER";
 
   // SETTING INITAL MODE (EITHER SHOW OR EMPTY) AND EXTRACTING OUT FUNCTIONS
   const { mode, transition, back } = useVisualMode(
@@ -28,17 +29,24 @@ export default function Appointment(props) {
 
   // SAVING INTERVIEW
   const save = (name, interviewer) => {
+
     const interview = {
       student: name,
       interviewer
     };
-    transition(SAVING);
+    transition(SAVING)
+    
+    if (!interviewer) {
+      transition(ERROR_INTERVIEWER)
 
+    } else {
+
+      props
+        .bookInterview(props.id, interview)
+        .then(() => transition(SHOW))
+        .catch(() => transition(ERROR_SAVE, true));
+    }
     // Sending info to Application and handling response accordingly
-    props
-      .bookInterview(props.id, interview)
-      .then(() => transition(SHOW))
-      .catch(() => transition(ERROR_SAVE, true));
   };
 
   // EDIT INTERVIEW
@@ -65,6 +73,7 @@ export default function Appointment(props) {
       <Header time={props.time} />
 
       {/* Empty the card and display an on-click plus image (CREATE)*/}
+
       {mode === EMPTY && <Empty onAdd={() => transition(CREATE)} />}
 
       {/* Show the card with the set student and interviewer names from props */}
@@ -107,6 +116,13 @@ export default function Appointment(props) {
       {mode === ERROR_DELETE && (
         <Error
           message={"Could not delete appointment"}
+          onClose={() => back()}
+        />
+      )}
+
+      {mode === ERROR_INTERVIEWER && (
+        <Error
+          message={"Please select an interviewer"}
           onClose={() => back()}
         />
       )}

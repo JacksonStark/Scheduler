@@ -2,6 +2,7 @@ export const SET_DAY = "SET_DAY";
 export const SET_APPLICATION_DATA = "SET_APPLICATION_DATA";
 export const SET_INTERVIEW = "SET_INTERVIEW";
 
+// call this within SET_INTERVIEW and pass to it the temp state (eg. tempState = { ...state, appointments: action.value } )
 export const calculateSpots = state => {
   // map through days
   const days = state.days.map(day => {
@@ -20,6 +21,7 @@ export const calculateSpots = state => {
   // our days array we will inject into our new state
   return days;
 };
+// return 'days' to SET_INTERVIEW and return the new, updated state (eg. return { ...tempState, days } )
 
 export default function reducer(state, action) {
   switch (action.type) {
