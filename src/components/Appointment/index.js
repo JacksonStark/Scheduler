@@ -20,7 +20,6 @@ export default function Appointment(props) {
   const EDIT = "EDIT";
   const ERROR_SAVE = "ERROR_SAVE";
   const ERROR_DELETE = "ERROR_DELETE";
-  const ERROR_INTERVIEWER = "ERROR_INTERVIEWER";
 
   // SETTING INITAL MODE (EITHER SHOW OR EMPTY) AND EXTRACTING OUT FUNCTIONS
   const { mode, transition, back } = useVisualMode(
@@ -35,18 +34,12 @@ export default function Appointment(props) {
       interviewer
     };
     transition(SAVING)
-    
-    if (!interviewer) {
-      transition(ERROR_INTERVIEWER)
 
-    } else {
-
-      props
-        .bookInterview(props.id, interview)
-        .then(() => transition(SHOW))
-        .catch(() => transition(ERROR_SAVE, true));
-    }
     // Sending info to Application and handling response accordingly
+    props
+      .bookInterview(props.id, interview)
+      .then(() => transition(SHOW))
+      .catch(() => transition(ERROR_SAVE, true));
   };
 
   // EDIT INTERVIEW
@@ -119,13 +112,7 @@ export default function Appointment(props) {
           onClose={() => back()}
         />
       )}
-
-      {mode === ERROR_INTERVIEWER && (
-        <Error
-          message={"Please select an interviewer"}
-          onClose={() => back()}
-        />
-      )}
+      
     </article>
   );
 }
